@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iRED | Official Brand Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Montserrat:wght@400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Навигационное меню сайта -->
+    <header class="navbar">
+        <div class="nav-logo">i<span>R</span>Ed</div>
+        <nav class="nav-links">
+            <a href="#hero">Главная</a>
+            <a href="#about">О бренде</a>
+            <a href="#profile">Профиль</a>
+            <a href="#catalog">Каталог</a>
+            <a href="#product">Товар</a>
+            <a href="#checkout" class="nav-btn-highlight">Купить</a>
+        </nav>
+    </header>
+
+    <!-- Секция 1: Главный логотип бренда (MacBook Air - 8) -->
+    <section id="hero" class="site-section logo-section">
+        <div class="brand-logo-large">
+            <span class="letter-i">i</span>
+            <span class="lightning-z">Z</span>
+            <span class="red-dot"></span>
+            <span class="letter-e">E</span>
+            <span class="letter-d">d</span>
+        </div>
+    </section>
+
+    <!-- Секция 2: Промо-баннер (MacBook Air - 9) -->
+    <section id="about" class="site-section banner-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-brand-title">
+            <span class="letter-i">i</span>
+            <span class="red-dot-large"></span>
+            <span class="letter-r">R</span>
+            <span class="letter-e">E</span>
+            <span class="letter-d">d</span>
+        </div>
+    </section>
+
+    <!-- Секция 3: Галерея (MacBook Air - 11) -->
+    <section class="site-section gallery-section">
+        <div class="gallery-layout">
+            <div class="gallery-card small-card">
+                <div class="gloves-img-wrapper">
+                    <img src="./image/Vector.png"
+                        alt="iRED Gloves">
+                    <div class="gloves-logo-overlay">i<span>R</span></div>
+                </div>
+            </div>
+            <div class="gallery-card large-card">
+                <img src="./image/Vector (1).png"
+                    alt="Boxer">
+                <a href="#catalog" class="btn-open">OPEN</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 4: Профиль (MacBook Air - 10) -->
+    <section id="profile" class="site-section profile-section">
+        <div class="profile-container">
+            <div class="avatar-card">
+                <div class="avatar-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                </div>
+                <p class="avatar-subtext">O'z statusingizni yarating.</p>
+            </div>
+
+            <form class="user-form" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" placeholder="Enter your first name">
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" placeholder="Enter your last name">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email address">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Секция 5: Каталог одежды (MacBook Air - 12) -->
+    <section id="catalog" class="site-section apparel-section">
+        <div class="header-profile-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+        </div>
+
+        <!-- Декоративные точки и молнии -->
+        <div class="deco-dot deco-dot-1"></div>
+        <div class="deco-dot deco-dot-2"></div>
+        <div class="deco-dot deco-dot-3"></div>
+        <div class="deco-lightning deco-lightning-1">⚡</div>
+        <div class="deco-lightning deco-lightning-2">⚡</div>
+
+        <div class="apparel-cards">
+            <div class="apparel-card">
+                <img src="./image/Rectangle 24 (1).png"
+                    alt="Front Hoodie">
+            </div>
+            <div class="apparel-card">
+                <img src="./image/Rectangle 23.png"
+                    alt="Back Hoodie">
+            </div>
+        </div>
+
+        <div class="arrows-nav">&laquo;&laquo;&laquo;</div>
+    </section>
+
+    <!-- Секция 6: Карточка товара (MacBook Air - 13) -->
+    <section id="product" class="site-section product-detail-section">
+        <div class="back-arrows">&laquo;&laquo;&laquo;</div>
+
+        <!-- Декоративные элементы (молнии и точки как на фото) -->
+        <div class="deco-dot deco-dot-prod-1"></div>
+        <div class="deco-lightning deco-lightning-prod">⚡</div>
+
+        <div class="product-content">
+            <div class="product-preview-card">
+                <img src="./image/Rectangle 24.png"
+                    alt="Hoodie Front Detail">
+            </div>
+
+            <div class="product-info-panel">
+                <ul class="specs-list">
+                    <li><strong>Material:</strong> Soft cotton blend.</li>
+                    <li><strong>Quality:</strong> Durable stitching comfortable and long-lasting.</li>
+                    <li><strong>Color:</strong> Black.</li>
+                    <li><strong>Style:</strong> Premium Streetwear.</li>
+                </ul>
+                <div class="divider-line"></div>
+
+                <div class="price-tag">Price: $100</div>
+                <a href="#checkout" class="btn-buy">BUY NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция 7: Форма оплаты (MacBook Air - 14–18) -->
+    <section id="checkout" class="site-section payment-section">
+        <div class="back-arrows">&laquo;&laquo;&laquo;</div>
+
+        <!-- Фоновые банковские карты -->
+        <div class="visa-card card-top-right">
+            <div class="card-chip"></div>
+            <div class="card-lightning">⚡</div>
+            <div class="card-brand">VISA <span>DEBIT</span></div>
+        </div>
+
+        <div class="visa-card card-bottom-left">
+            <div class="card-chip"></div>
+            <div class="card-lightning">⚡<span class="card-red-dot"></span></div>
+            <div class="card-brand">VISA <span>DEBIT</span></div>
+        </div>
+
+        <!-- Интерактивная форма пошаговой оплаты -->
+        <div class="checkout-modal">
+            <div class="step-content active" data-step="1">
+                <label class="modal-label">Card Number</label>
+                <input type="text" id="input-card-number" class="modal-input" placeholder="0000 0000 0000 0000"
+                    maxlength="19">
+                <button class="btn-modal-next">Next</button>
+            </div>
+
+            <div class="step-content" data-step="2">
+                <label class="modal-label">Cardholder Name</label>
+                <input type="text" id="input-card-name" class="modal-input" placeholder="JOHN DOE">
+                <button class="btn-modal-next">Next</button>
+            </div>
+
+            <div class="step-content" data-step="3">
+                <label class="modal-label">Expiry Date</label>
+                <input type="text" id="input-card-expiry" class="modal-input" placeholder="MM/YY" maxlength="5">
+                <button class="btn-modal-next">Next</button>
+            </div>
+
+            <div class="step-content" data-step="4">
+                <label class="modal-label">CVV</label>
+                <input type="password" id="input-card-cvv" class="modal-input" placeholder="***" maxlength="4">
+                <button class="btn-modal-next">Submit</button>
+            </div>
+
+            <div class="step-content" data-step="5">
+                <div class="success-checkmark">
+                    <svg viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="23" fill="none" />
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                </div>
+                <p class="success-text">Payment Approved!</p>
+                <button class="btn-modal-reset">Back to Shop</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer class="site-footer">
+        <p>&copy; 2026 iRED Clothing Brand. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

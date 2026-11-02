@@ -1,0 +1,1019 @@
+/* ==========================================================================
+   Сброс стилей и базовая настройка
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier Prime", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Анимации (Keyframes)
+   ========================================================================== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(35px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Пульс красной точки */
+@keyframes redPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 30, 39, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 30, 39, 0);
+    transform: scale(1.12);
+  }
+}
+
+/* Парение карточек VISA */
+@keyframes floatCard {
+  0%, 100% { transform: rotate(12deg) translateY(0px); }
+  50%       { transform: rotate(12deg) translateY(-10px); }
+}
+
+@keyframes floatCardAlt {
+  0%, 100% { transform: rotate(-10deg) translateY(0px); }
+  50%       { transform: rotate(-10deg) translateY(-14px); }
+}
+
+/* Мерцание логотипа */
+@keyframes logoBlink {
+  0%, 88%, 100% { opacity: 1; }
+  90%           { opacity: 0.65; }
+  93%           { opacity: 1; }
+  96%           { opacity: 0.7; }
+}
+
+/* Анимация обводки чекмарка */
+@keyframes stroke {
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Дрожание молнии */
+@keyframes decoFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+  50%       { transform: translateY(-8px) rotate(5deg); opacity: 0.8; }
+}
+
+/* Пульс декоративных точек */
+@keyframes dotFloat {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50%       { transform: scale(1.3); opacity: 0.6; }
+}
+
+/* Скользящий блик кнопки */
+@keyframes btnShine {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Появление навбара */
+@keyframes navSlide {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ==========================================================================
+   Навигационная панель
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(20, 20, 20, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  animation: navSlide 0.5s ease forwards;
+  transition: background 0.3s ease;
+}
+
+.nav-logo {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: 2px;
+  animation: logoBlink 5s infinite 3s;
+  cursor: pointer;
+}
+
+.nav-logo span {
+  color: #ff1e27;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #ff1e27;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: #ffffff; }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-links .nav-btn-highlight {
+  background: #ff1e27;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links .nav-btn-highlight::after { display: none; }
+
+.nav-links .nav-btn-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.nav-links .nav-btn-highlight:hover {
+  background: #d4141c;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 30, 39, 0.4);
+}
+
+.nav-links .nav-btn-highlight:hover::before {
+  animation: btnShine 0.5s ease forwards;
+}
+
+/* ==========================================================================
+   Общие секции
+   ========================================================================== */
+.site-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 80px 20px;
+  border-bottom: 1px solid #1e1e1e;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Секция 1: Главный логотип (MacBook Air - 8)
+   ========================================================================== */
+.logo-section {
+  background-color: #2d2d2d;
+}
+
+.brand-logo-large {
+  display: flex;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 130px;
+  color: #ffffff;
+  letter-spacing: -2px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.brand-logo-large .lightning-z {
+  display: inline-block;
+  transform: skewX(-15deg);
+  margin: 0 -5px;
+  transition: color 0.3s ease;
+}
+
+.brand-logo-large:hover .lightning-z {
+  color: #ff1e27;
+  text-shadow: 0 0 30px rgba(255, 30, 39, 0.5);
+}
+
+.brand-logo-large .red-dot {
+  width: 20px;
+  height: 20px;
+  background-color: #ff1e27;
+  border-radius: 50%;
+  margin-top: 60px;
+  margin-left: -14px;
+  margin-right: 10px;
+  animation: redPulse 2.5s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Секция 2: Баннер (MacBook Air - 9)
+   ========================================================================== */
+.banner-section {
+  background: url("image/MacBook Air - 9.png") center/cover no-repeat;
+}
+
+/* Если локального фото нет, fallback на Unsplash */
+.banner-section {
+  background: url("image/MacBook Air - 9.png") center/cover no-repeat,
+              url("https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1600&auto=format&fit=crop") center/cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-brand-title {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 150px;
+  color: #ffffff;
+  animation: scaleIn 0.9s ease forwards;
+}
+
+.hero-brand-title .red-dot-large {
+  width: 32px;
+  height: 32px;
+  background-color: #ff1e27;
+  border-radius: 50%;
+  margin-top: 50px;
+  margin-right: 5px;
+  animation: redPulse 2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Секция 3: Галерея (MacBook Air - 11)
+   ========================================================================== */
+.gallery-section {
+  background-color: #333333;
+}
+
+.gallery-layout {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+  height: 480px;
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.gallery-card {
+  border-radius: 35px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+              box-shadow 0.45s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.small-card {
+  flex: 1;
+  background: #000;
+}
+
+.gloves-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gloves-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.gallery-card:hover .gloves-img-wrapper img {
+  filter: grayscale(70%);
+  transform: scale(1.04);
+}
+
+.gloves-logo-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 900;
+  font-size: 28px;
+  color: white;
+  pointer-events: none;
+}
+
+.gloves-logo-overlay span {
+  color: #ff1e27;
+}
+
+.large-card {
+  flex: 2;
+}
+
+.large-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.large-card:hover img {
+  transform: scale(1.04);
+}
+
+.btn-open {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(40, 40, 40, 0.85);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 45px;
+  border-radius: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  white-space: nowrap;
+  position: absolute;
+  overflow: hidden;
+}
+
+.btn-open::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
+
+.btn-open:hover {
+  background: #ff1e27;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 30, 39, 0.4);
+}
+
+.btn-open:hover::before {
+  animation: btnShine 0.5s ease forwards;
+}
+
+/* ==========================================================================
+   Секция 4: Профиль (MacBook Air - 10)
+   ========================================================================== */
+.profile-section {
+  background-color: #2b2b2b;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 750px;
+  animation: fadeInLeft 0.7s ease forwards;
+}
+
+.avatar-card {
+  background: #d9d9d9;
+  width: 220px;
+  height: 280px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  flex-shrink: 0;
+}
+
+.avatar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.avatar-icon {
+  width: 100px;
+  height: 130px;
+  background: #666;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d9d9d9;
+  margin-bottom: 20px;
+}
+
+.avatar-icon svg {
+  width: 70px;
+  height: 70px;
+}
+
+.avatar-subtext {
+  color: #333;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.user-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-form .form-group {
+  background: #d9d9d9;
+  border-radius: 14px;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.user-form .form-group::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff1e27;
+  transition: width 0.35s ease;
+}
+
+.user-form .form-group:focus-within {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.user-form .form-group:focus-within::after {
+  width: 100%;
+}
+
+.user-form label {
+  color: #555;
+  font-size: 10px;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.user-form input {
+  border: none;
+  background: transparent;
+  outline: none;
+  text-align: center;
+  font-size: 12px;
+  color: #222;
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   Секция 5: Каталог (MacBook Air - 12)
+   ========================================================================== */
+.apparel-section {
+  background-color: #2b2b2b;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Декоративные красные точки */
+.deco-dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ff1e27;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: dotFloat 2.5s ease-in-out infinite;
+}
+
+.deco-dot-1 { top: 25%; left: 22%; animation-delay: 0s; }
+.deco-dot-2 { top: 60%; right: 25%; animation-delay: 0.8s; }
+.deco-dot-3 { bottom: 28%; left: 38%; animation-delay: 1.4s; }
+
+/* Декоративные молнии */
+.deco-lightning {
+  position: absolute;
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  animation: decoFloat 3s ease-in-out infinite;
+}
+
+.deco-lightning-1 { top: 20%; right: 20%; animation-delay: 0.5s; transform: rotate(15deg); }
+.deco-lightning-2 { bottom: 20%; left: 18%; animation-delay: 1.2s; transform: rotate(-10deg); }
+
+/* Декор на странице товара */
+.deco-dot-prod-1 {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ff1e27;
+  border-radius: 50%;
+  top: 35%;
+  right: 20%;
+  animation: dotFloat 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.deco-lightning-prod {
+  position: absolute;
+  font-size: 64px;
+  color: rgba(255, 255, 255, 0.08);
+  bottom: 20%;
+  right: 18%;
+  transform: rotate(10deg);
+  animation: decoFloat 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.header-profile-btn {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  width: 44px;
+  height: 44px;
+  background: #444;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.header-profile-btn:hover {
+  background: #555;
+  transform: scale(1.08);
+}
+
+.header-profile-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: #aaa;
+}
+
+.apparel-cards {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.apparel-card {
+  width: 240px;
+  height: 350px;
+  background: #e0e0e0;
+  border-radius: 40px;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+              box-shadow 0.45s ease;
+  cursor: pointer;
+}
+
+.apparel-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+.apparel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.apparel-card:hover img {
+  transform: scale(1.06);
+}
+
+.arrows-nav {
+  font-size: 26px;
+  letter-spacing: -2px;
+  color: #aaa;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.arrows-nav:hover {
+  color: #ff1e27;
+  letter-spacing: -1px;
+}
+
+/* ==========================================================================
+   Секция 6: Товар (MacBook Air - 13)
+   ========================================================================== */
+.product-detail-section {
+  background-color: #2b2b2b;
+}
+
+.back-arrows {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  font-size: 26px;
+  color: #aaa;
+  cursor: pointer;
+  letter-spacing: -2px;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.back-arrows:hover {
+  color: #ff1e27;
+  letter-spacing: -1px;
+}
+
+.product-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  max-width: 800px;
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.product-preview-card {
+  width: 250px;
+  height: 350px;
+  background: #e0e0e0;
+  border-radius: 40px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.product-preview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.product-preview-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.product-preview-card:hover img {
+  transform: scale(1.05);
+}
+
+.product-info-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.specs-list {
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #eee;
+}
+
+.divider-line {
+  height: 1px;
+  background: #777;
+  margin: 25px 0 20px 0;
+  width: 100%;
+}
+
+.price-tag {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  align-self: flex-end;
+}
+
+.btn-buy {
+  align-self: flex-end;
+  background: #555;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 32px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-buy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
+
+.btn-buy:hover {
+  background: #ff1e27;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 30, 39, 0.4);
+}
+
+.btn-buy:hover::before {
+  animation: btnShine 0.5s ease forwards;
+}
+
+/* ==========================================================================
+   Секция 7: Оплата (MacBook Air - 14–18)
+   ========================================================================== */
+.payment-section {
+  background-color: #2b2b2b;
+}
+
+.visa-card {
+  position: absolute;
+  width: 340px;
+  height: 200px;
+  background: linear-gradient(135deg, #222, #111);
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.4s ease;
+}
+
+.visa-card:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+.card-top-right {
+  top: 15%;
+  right: 15%;
+  animation: floatCard 4s ease-in-out infinite;
+}
+
+.card-bottom-left {
+  bottom: 15%;
+  left: 15%;
+  animation: floatCardAlt 4.5s ease-in-out infinite 0.6s;
+}
+
+.card-chip {
+  width: 44px;
+  height: 32px;
+  background: #d4af37;
+  border-radius: 6px;
+}
+
+.card-lightning {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  font-size: 42px;
+  color: #555;
+}
+
+.card-red-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #ff1e27;
+  border-radius: 50%;
+  animation: dotFloat 2s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+.card-brand {
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+}
+
+.card-brand span {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+}
+
+/* Чекаут-модал */
+.checkout-modal {
+  position: relative;
+  z-index: 10;
+  width: 320px;
+  height: 190px;
+  background: rgba(45, 45, 45, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  border: 1px solid #444;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn 0.5s ease forwards;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.checkout-modal:hover {
+  border-color: rgba(255, 30, 39, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 30, 39, 0.06);
+}
+
+.step-content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.step-content.active {
+  display: flex;
+}
+
+.modal-label {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.modal-input {
+  width: 90%;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #fff;
+  text-align: center;
+  outline: none;
+  margin-bottom: 15px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-input:focus {
+  border-color: #ff1e27;
+  box-shadow: 0 0 0 3px rgba(255, 30, 39, 0.12);
+}
+
+.btn-modal-next,
+.btn-modal-reset {
+  background: #ff1e27;
+  color: white;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: inherit;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-modal-next::before,
+.btn-modal-reset::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.btn-modal-next:hover,
+.btn-modal-reset:hover {
+  background: #d4141c;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(255, 30, 39, 0.4);
+}
+
+.btn-modal-next:hover::before,
+.btn-modal-reset:hover::before {
+  animation: btnShine 0.4s ease forwards;
+}
+
+/* Чекмарк успеха */
+.success-checkmark {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  animation: scaleIn 0.4s ease forwards;
+}
+
+.checkmark-circle {
+  stroke: #ff1e27;
+  stroke-width: 3;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  stroke: #ff1e27;
+  stroke-width: 4;
+  animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
+}
+
+.success-text {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* ==========================================================================
+   Подвал
+   ========================================================================== */
+.site-footer {
+  background: #0a0a0a;
+  text-align: center;
+  padding: 25px;
+  font-size: 12px;
+  color: #666;
+  border-top: 1px solid #1a1a1a;
+}
+
+/* ==========================================================================
+   Адаптивность
+   ========================================================================== */
+@media (max-width: 768px) {
+  .navbar { padding: 0 20px; }
+  .nav-links { gap: 12px; font-size: 12px; }
+  .brand-logo-large { font-size: 70px; }
+  .hero-brand-title { font-size: 80px; }
+  .gallery-layout { flex-direction: column; height: auto; }
+  .gallery-card { height: 260px; }
+  .profile-container,
+  .product-content { flex-direction: column; gap: 25px; }
+  .visa-card { display: none; }
+  .apparel-cards { flex-wrap: wrap; justify-content: center; }
+}
